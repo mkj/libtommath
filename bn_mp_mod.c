@@ -43,6 +43,6 @@ mp_mod (mp_int * a, mp_int * b, mp_int * c)
 }
 #endif
 
-/* $Source: /cvs/libtom/libtommath/bn_mp_mod.c,v $ */
-/* $Revision: 1.3 $ */
-/* $Date: 2006/03/31 14:18:44 $ */
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */

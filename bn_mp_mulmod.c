@@ -35,6 +35,6 @@ int mp_mulmod (mp_int * a, mp_int * b, mp_int * c, mp_int * d)
 }
 #endif
 
-/* $Source: /cvs/libtom/libtommath/bn_mp_mulmod.c,v $ */
-/* $Revision: 1.4 $ */
-/* $Date: 2006/03/31 14:18:44 $ */
+/* $Source$ */
+/* $Revision$ */
+/* $Date$ */
