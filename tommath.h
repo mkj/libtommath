@@ -21,7 +21,7 @@
 #include <ctype.h>
 #include <limits.h>
 
-#include <tommath_class.h>
+#include "tommath_class.h"
 
 #ifndef MIN
    #define MIN(x,y) ((x)<(y)?(x):(y))
@@ -579,6 +579,6 @@ extern const char *mp_s_rmap;
 #endif
 
 
-/* $Source$ */
-/* $Revision$ */
-/* $Date$ */
+/* $Source: /cvs/libtom/libtommath/tommath.h,v $ */
+/* $Revision: 1.8 $ */
+/* $Date: 2006/03/31 14:18:44 $ */

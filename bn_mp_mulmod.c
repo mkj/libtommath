@@ -21,7 +21,7 @@ int mp_mulmod (mp_int * a, mp_int * b, mp_int * c, mp_int * d)
   int     res;
   mp_int  t;
 
-  if ((res = mp_init (&t)) != MP_OKAY) {
+  if ((res = mp_init_size (&t, c->used)) != MP_OKAY) {
     return res;
   }
 
@@ -35,6 +35,6 @@ int mp_mulmod (mp_int * a, mp_int * b, mp_int * c, mp_int * d)
 }
 #endif
 
-/* $Source$ */
-/* $Revision$ */
-/* $Date$ */
+/* $Source: /cvs/libtom/libtommath/bn_mp_mulmod.c,v $ */
+/* $Revision: 1.4 $ */
+/* $Date: 2006/03/31 14:18:44 $ */

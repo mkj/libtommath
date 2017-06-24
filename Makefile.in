@@ -5,22 +5,22 @@
 #version of library 
 VERSION=0.40
 
-CFLAGS  +=  -I./ -Wall -W -Wshadow -Wsign-compare
 
-ifndef MAKE
-   MAKE=make
-endif
+srcdir=.
+
+# So that libtommath can include Dropbear headers for options and m_burn()
+CFLAGS += -I. -I$(srcdir) -I../libtomcrypt/src/headers/ -I$(srcdir)/../libtomcrypt/src/headers/ -I../ -I$(srcdir)/../
 
 ifndef IGNORE_SPEED
 
 #for speed 
-CFLAGS += -O3 -funroll-loops
+#CFLAGS += -O3 -funroll-all-loops
 
 #for size 
 #CFLAGS += -Os
 
 #x86 optimizations [should be valid for any GCC install though]
-CFLAGS  += -fomit-frame-pointer
+#CFLAGS  += -fomit-frame-pointer
 
 #debug
 #CFLAGS += -g3
@@ -87,7 +87,7 @@ bn_mp_to_signed_bin_n.o bn_mp_to_unsigned_bin_n.o
 
 $(LIBNAME):  $(OBJECTS)
 	$(AR) $(ARFLAGS) $@ $(OBJECTS)
-	ranlib $@
+	$(RANLIB) $@
 
 #make a profiled library (takes a while!!!)
 #
@@ -110,7 +110,7 @@ profiled_single:
 	rm -f *.o ltmtest
 	$(CC) $(CFLAGS) -fbranch-probabilities -DTESTING -c mpi.c -o mpi.o
 	$(AR) $(ARFLAGS) $(LIBNAME) mpi.o
-	ranlib $(LIBNAME)	
+	$(RANLIB) $(LIBNAME)	
 
 install: $(LIBNAME)
 	install -d -g $(GROUP) -o $(USER) $(DESTDIR)$(LIBPATH)
@@ -168,8 +168,8 @@ clean:
 	rm -f *.bat *.pdf *.o *.a *.obj *.lib *.exe *.dll etclib/*.o demo/demo.o test ltmtest mpitest mtest/mtest mtest/mtest.exe \
         *.idx *.toc *.log *.aux *.dvi *.lof *.ind *.ilg *.ps *.log *.s mpi.c *.da *.dyn *.dpi tommath.tex `find . -type f | grep [~] | xargs` *.lo *.la
 	rm -rf .libs
-	cd etc ; MAKE=${MAKE} ${MAKE} clean
-	cd pics ; MAKE=${MAKE} ${MAKE} clean
+	-cd etc && MAKE=${MAKE} ${MAKE} clean
+	-cd pics && MAKE=${MAKE} ${MAKE} clean
 
 #zipup the project (take that!)
 no_oops: clean

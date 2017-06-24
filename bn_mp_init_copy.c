@@ -20,13 +20,13 @@ int mp_init_copy (mp_int * a, mp_int * b)
 {
   int     res;
 
-  if ((res = mp_init (a)) != MP_OKAY) {
+  if ((res = mp_init_size (a, b->used)) != MP_OKAY) {
     return res;
   }
   return mp_copy (b, a);
 }
 #endif
 
-/* $Source$ */
-/* $Revision$ */
-/* $Date$ */
+/* $Source: /cvs/libtom/libtommath/bn_mp_init_copy.c,v $ */
+/* $Revision: 1.3 $ */
+/* $Date: 2006/03/31 14:18:44 $ */

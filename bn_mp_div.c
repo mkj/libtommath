@@ -269,7 +269,9 @@ int mp_div (mp_int * a, mp_int * b, mp_int * c, mp_int * d)
   }
 
   if (d != NULL) {
-    mp_div_2d (&x, norm, &x, NULL);
+    if ((res = mp_div_2d (&x, norm, &x, NULL)) != MP_OKAY) {
+		goto LBL_Y;
+	}
     mp_exch (&x, d);
   }
 
@@ -287,6 +289,6 @@ LBL_Q:mp_clear (&q);
 
 #endif
 
-/* $Source$ */
-/* $Revision$ */
-/* $Date$ */
+/* $Source: /cvs/libtom/libtommath/bn_mp_div.c,v $ */
+/* $Revision: 1.3 $ */
+/* $Date: 2006/03/31 14:18:44 $ */

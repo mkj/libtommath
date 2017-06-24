@@ -22,7 +22,7 @@ mp_mod (mp_int * a, mp_int * b, mp_int * c)
   mp_int  t;
   int     res;
 
-  if ((res = mp_init (&t)) != MP_OKAY) {
+  if ((res = mp_init_size (&t, b->used)) != MP_OKAY) {
     return res;
   }
 
@@ -43,6 +43,6 @@ mp_mod (mp_int * a, mp_int * b, mp_int * c)
 }
 #endif
 
-/* $Source$ */
-/* $Revision$ */
-/* $Date$ */
+/* $Source: /cvs/libtom/libtommath/bn_mp_mod.c,v $ */
+/* $Revision: 1.3 $ */
+/* $Date: 2006/03/31 14:18:44 $ */
